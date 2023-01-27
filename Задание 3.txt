@@ -1,0 +1,12 @@
+Пусть исходные таблицы называются Products (столбец IdPr с первичным ключом, столбец NamePr) и Categories (IdCat - первичный ключ, NameCat). Для реализации связи "многие ко многим" потребуется вспомогательная таблица ProdCat со столбцами IdPr и IdCat, которые будут соединяться с таблицами Products, Categories внешними ключами.
+
+Чтобы выбрать все пары "Имя продукта - имя категории" нужен:
+
+SELECT Products.NamePr, Categories.NameCat
+FROM Products
+LEFT JOIN ProdCat
+ON Products.IdPr = ProdCat.IdPr
+LEFT JOIN Categories
+ON Categories.IdCat = ProdCat.IdCat
+
+Этот запрос отобразит название продукта, даже если ему не присвоена категория
